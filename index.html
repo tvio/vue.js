@@ -1,0 +1,19 @@
+
+
+<div id=app>
+    <h1 v-once>{{title}}</h1>
+    <p>{{sayHello()}} - <a v-bind:href="link">Gooogle</a></p>
+    <hr>
+    <!-- nejde renderovat html, pouze doplnujet ext -->
+    <p>{{finishedLink}}</p>
+    <!-- tahle doplnuje take html tagy -->
+    <p v-html="finishedLink"></p>    
+</div>
+<div>
+    <button v-on:click="increase">Click me</button>
+    <p>{{counter}}</p>
+    <p v-on:mousemove="updateCoordinates">Coordinates : {{x}}/{{y}}</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="app.js"></script>
