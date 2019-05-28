@@ -1,0 +1,10 @@
+{
+  "name": "vue.js",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/tvio/vue.js.git",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint --ext .js,.vue resources/js/"
+  }
+}
