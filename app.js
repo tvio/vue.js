@@ -8,7 +8,8 @@ new Vue({
     secondCounter: 0,
     x: 0,
     y: 0,
-    name: ""
+    name: "",
+    attachRed: false
   },
   computed: {
     output: function() {

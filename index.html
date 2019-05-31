@@ -1,33 +1,51 @@
-<div id="app">
-  <h1 v-once>{{ title }}</h1>
-  <!-- v-bind jde nahradit : -->
-  <p>{{ sayHello() }} - <a :href="link">Gooogle</a></p>
-  <hr />
-  <!-- nejde renderovat html, pouze doplnujet ext -->
-  <p>{{ finishedLink }}</p>
-  <!-- tahle doplnuje take html tagy -->
-  <p v-html="finishedLink"></p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="css.css" />
+  </head>
+  <body>
+    <div id="app">
+      <h1 v-once>{{ title }}</h1>
+      <!-- v-bind jde nahradit : -->
+      <p>{{ sayHello() }} - <a :href="link">Gooogle</a></p>
+      <hr />
+      <!-- nejde renderovat html, pouze doplnujet ext -->
+      <p>{{ finishedLink }}</p>
+      <!-- tahle doplnuje take html tagy -->
+      <p v-html="finishedLink"></p>
 
-  <button v-on:click="increase(2,$event)">Click me</button>
+      <button v-on:click="increase(2,$event)">Click me</button>
 
-  <button v-on:click="counter++">Click me</button>
-  <p>{{ counter * 2 > 10 ? "Greater then 10" : "Smaller then 10" }}</p>
-  <p v-on:mousemove="updateCoordinates">
-    Coordinates : {{ x }}/{{ y }} -
-    <span v-on:mousemove.stop="">DEAD SPOT</span>
-  </p>
-  <input type="text" v-on:keyup.enter="alertMe" />
-  <hr />
-  <input type="text" v-model="name" />
-  <p>{{ name }}</p>
-  <hr />
-  <button v-on:click="counter++">Pridej</button>
-  <button v-on:click="counter--">Uber</button>
-  <!-- v-on rovna se @ -->
-  <button @click="secondCounter++">Pridej2</button>
-  <p>Counter:{{ counter }}| {{ secondCounter }}</p>
-  <p>Vysledek:{{ result() }} | {{ output }}</p>
-</div>
+      <button v-on:click="counter++">Click me</button>
+      <p>{{ counter * 2 > 10 ? "Greater then 10" : "Smaller then 10" }}</p>
+      <p v-on:mousemove="updateCoordinates">
+        Coordinates : {{ x }}/{{ y }} -
+        <span v-on:mousemove.stop="">DEAD SPOT</span>
+      </p>
+      <input type="text" v-on:keyup.enter="alertMe" />
+      <hr />
+      <input type="text" v-model="name" />
+      <p>{{ name }}</p>
+      <hr />
+      <button v-on:click="counter++">Pridej</button>
+      <button v-on:click="counter--">Uber</button>
+      <!-- v-on rovna se @ -->
+      <button @click="secondCounter++">Pridej2</button>
+      <p>Counter:{{ counter }}| {{ secondCounter }}</p>
+      <p>Vysledek:{{ result() }} | {{ output }}</p>
 
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script src="app.js"></script>
+      <hr />
+      <div
+        class="demo"
+        @click="attachRed = !attachRed"
+        :class="{red: attachRed}"
+      ></div>
+      <div class="demo"></div>
+      <div class="demo"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
