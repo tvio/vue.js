@@ -41,11 +41,26 @@
         @click="attachRed = !attachRed"
         :class="{red: attachRed}"
       ></div>
-      <div class="demo"></div>
-      <div class="demo"></div>
+      <div class="demo"
+      @click="attachRed = !attachRed"
+        :class="divClasses">
+      </div>
+      <!-- mix podminek -->
+      <div class="demo" :class="[color,{red:attachRed}]"></div>
+        <hr>
+      <input type="text" v-model="color">;
+    
+    <hr>
+      <div class="demo" :style="{backgroundColor:color}"></div>
+      <div class="demo" :style="myStyle"></div>
+      <div class="demo" :style="[myStyle,{height:width+'px'}]"></div>
+        <hr>
+        <input type="text" v-model="width">
+      <!-- <input type="text" v-model="color">; -->
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="app.js"></script>
   </body>
 </html>
+
