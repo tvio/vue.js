@@ -1,40 +1,43 @@
-
-
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="styles.css" />
   </head>
-<div id="exercise">
-  <!-- 1) Start the Effect with the Button. The Effect should alternate the "highlight" or "shrink" class on each new setInterval tick (attach respective class to the div with id "effect" below) -->
-  <div>
-    <button @click="startEffect">Start Effect</button>
-    <div id="effect" :style="startEffect()"></div>
+  <div id="exercise">
+    <!-- 1) Start the Effect with the Button. The Effect should alternate the "highlight" or "shrink" class on each new setInterval tick (attach respective class to the div with id "effect" below) -->
+    <div>
+      <button @click="startEffect">Start Effect</button>
+      <div id="effect" v-bind:class="effectClasses"></div>
+    </div>
+    <!-- 2) Create a couple of CSS classes and attach them via the array syntax -->
+    <div v-bind:class="[float,'blue','text-color']">Tohle je array</div>
+    <!-- 3) Let the user enter a class (create some example classes) and attach it -->
+    <div>
+      <label>Napis classu</label>
+      <input type="text" v-model="userClass" />
+      <div v-bind:class="[{visible:true},userClass]"></div>
+    </div>
+    <!-- 4) Let the user enter a class and enter true/ false for another class (create some example classes) and attach the classes -->
+    <div>
+      <label>Napis classu</label>
+      <input type="text" v-model="userClass" />
+      <label>True flase pro jinou classu</label>
+      <input type="text" v-model="isVisible" />
+      <div v-bind:class="[{visible:isVisible},userClass]"></div>
+    </div>
+    <!-- 5) Repeat 3) but now with values for styles (instead of class names). Attach the respective styles.  -->
+    <div>
+      <label>prikaz style</label>
+      <input type="text" v-model="myStyle.backgroundColor" />
+      <div v-bind:style="myStyle"></div>
+    </div>
+    <!-- 6) Create a simple progress bar with setInterval and style bindings. Start it by hitting the below button. -->
+    <div>
+      <button v-on:click="gogo">Start Progress</button>
+      <div v-bind:class="['progress-bar']" v-bind:style="progressBar"></div>
+    </div>
   </div>
-  <!-- 2) Create a couple of CSS classes and attach them via the array syntax -->
-  <div>I got no class :(</div>
-  <!-- 3) Let the user enter a class (create some example classes) and attach it -->
-  <div>
-    <input type="text">
-    <div></div>
-  </div>
-  <!-- 4) Let the user enter a class and enter true/ false for another class (create some example classes) and attach the classes -->
-  <div>
-    <input type="text">
-    <input type="text">
-    <div></div>
-  </div>
-  <!-- 5) Repeat 3) but now with values for styles (instead of class names). Attach the respective styles.  -->
-  <div>
-    <input type="text">
-    <div></div>
-  </div>
-  <!-- 6) Create a simple progress bar with setInterval and style bindings. Start it by hitting the below button. -->
-  <div>
-    <button>Start Progress</button>
-    <div></div>
-  </div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script src="app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="app.js"></script>
+</html>

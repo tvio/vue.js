@@ -1,17 +1,39 @@
 new Vue({
-  el: '#exercise',
+  el: "#exercise",
   data: {
-  bool: false
+    effectClasses: {
+      highlight: false,
+      shrink: true
+    },
+    float: "float",
+    userClass: "",
+    isVisible: true,
+    myStyle: {
+      width: "200px",
+      float: "center",
+      height: "100px",
+      backgroundColor: "gray"
+    },
+    progressBar: {
+      width: "0px",
+      backgroundColor: "red"
+    }
   },
   methods: {
     startEffect: function() {
-      
-        setInterval(function(){
-          if (bool) {console.log('true');this.bool=false; return 'highlight'}
-          
-          else {console.log('false');this.bool=true; return 'shrink'}
-         }, 3000)
-      }
+      var vm = this;
+      setInterval(function() {
+        vm.effectClasses.highlight = !vm.effectClasses.highlight;
+        vm.effectClasses.shrink = !vm.effectClasses.shrink;
+      }, 3000);
+    },
+    gogo: function() {
+      var vm = this;
+      var width = 0;
+      setInterval(function() {
+        width < 101 ? (width = width + 10) : (width = 0);
+        vm.progressBar.width = width + "px";
+      }, 500);
     }
   }
-);
+});

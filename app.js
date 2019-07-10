@@ -11,23 +11,23 @@ new Vue({
     name: "",
     attachRed: false,
     attachBlue: false,
-    color:'green',
-    width:100
+    color: "green",
+    width: 100
   },
   computed: {
     output: function() {
       console.log("computed");
       return this.counter > 5 ? "Greater 5" : "Smaller then 5";
     },
-    divClasses: function(){
-      return {red:this.attachRed}
-        },
-    myStyle: function(){
-      return{
+    divClasses: function() {
+      return { red: this.attachRed };
+    },
+    myStyle: function() {
+      return {
         backgroundColor: this.color,
-        width: this.width+'px'
+        width: this.width + "px"
+      };
     }
-  }
   },
   watch: {
     counter: function(value) {
@@ -35,7 +35,6 @@ new Vue({
       setTimeout(function() {
         vm.counter = 0;
       }, 2000);
-      
     }
   },
   methods: {
