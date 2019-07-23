@@ -41,26 +41,71 @@
         @click="attachRed = !attachRed"
         :class="{red: attachRed}"
       ></div>
-      <div class="demo"
-      @click="attachRed = !attachRed"
-        :class="divClasses">
-      </div>
+      <div
+        class="demo"
+        @click="attachRed = !attachRed"
+        :class="divClasses"
+      ></div>
       <!-- mix podminek -->
       <div class="demo" :class="[color,{red:attachRed}]"></div>
-        <hr>
-      <input type="text" v-model="color">;
-    
-    <hr>
+      <hr />
+      <input type="text" v-model="color" />;
+
+      <hr />
       <div class="demo" :style="{backgroundColor:color}"></div>
       <div class="demo" :style="myStyle"></div>
       <div class="demo" :style="[myStyle,{height:width+'px'}]"></div>
-        <hr>
-        <input type="text" v-model="width">
+      <hr />
+      <input type="text" v-model="width" />
       <!-- <input type="text" v-model="color">; -->
+      <!-- tohle odstranuje z domu -->
+      <div>
+        <p v-if="show">
+          you can see me<span>Tohle pujde taky pryc, rekurze</span>
+        </p>
+        <p v-else>Now you see mee</p>
+        <!-- lze take psat do div -->
+        <template v-if="show">
+          <h1>nadpis</h1>
+          <p>inside template</p>
+        </template>
+        <p>do you also see me</p>
+        <button @click="show=!show">kuk</button>
+      </div>
+      <!-- show nedostranuje cely dom, tzn. nepoksakuje, pouze ukryje -->
+      <div>
+        <p v-show="show">
+          Tohle ukryju ale stale poskakuje, ale ma display none
+        </p>
+        <p>TNejakej dalsi textik</p>
+      </div>
+      <!-- lists -->
+      <div>
+        <ul>
+          <li v-for="ingredient in ingredients">{{ ingredient }}</li>
+          <li v-for="(ingredient,i) in ingredients">
+            {{ ingredient }}({{ i }})
+          </li>
+        </ul>
+        <hr />
+        <ul>
+          <li v-for="person in persons">
+            <div v-for="(value,key,index) in person">
+              {{ key }}:{{ value }} ({{ index }})
+            </div>
+          </li>
+        </ul>
+        <hr />
+        <template v-for="(ingredient,index) in ingredients">
+          <h1>{{ ingredient }}</h1>
+          <p>{{ index }}</p>
+        </template>
+        <span v-for="n in 10">n</span>
+        <button @click="ingredients.push('spices')">Add new</button>
+      </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="app.js"></script>
   </body>
 </html>
-

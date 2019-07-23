@@ -12,7 +12,13 @@ new Vue({
     attachRed: false,
     attachBlue: false,
     color: "green",
-    width: 100
+    width: 100,
+    show: true,
+    ingredients: ["maso", "ovoce", "susenky"],
+    persons: [
+      { jmeno: "Tom", vek: 99, barva: "red" },
+      { jmeno: "Kvik", vek: 88, barva: "blue" }
+    ]
   },
   computed: {
     output: function() {
