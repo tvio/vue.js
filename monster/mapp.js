@@ -3,7 +3,8 @@ new Vue({
   data: {
     playerHealth: 100,
     monsterHealth: 100,
-    gameIsRunning: false
+    gameIsRunning: false,
+    turns: []
   },
   methods: {
     reset: function() {
@@ -28,23 +29,49 @@ new Vue({
     },
 
     attack: function() {
-      var damage = this.dmg();
-      this.playerHealth -= this.dmg(4, 10);
-      this.monsterHealth -= this.dmg(2, 10);
+      var damage = this.dmg(4, 10);
+      this.playerHealth -= damage;
+      this.turns.unshift({
+        isPlayer: true,
+        text: "Monster hits player for " + damage
+      });
+      damage = this.dmg(2, 10);
+      this.monsterHealth -= damage;
+      this.turns.unshift({
+        isPlayer: false,
+        text: "Player hits monster for " + damage
+      });
       this.checkDeath();
     },
     specialAttack: function() {
-      this.playerHealth -= this.dmg(4, 10);
-      this.monsterHealth -= this.dmg(2, 10) * 2;
+      var damage = this.dmg(4, 10);
+      this.playerHealth -= damage;
+      this.turns.unshift({
+        isPlayer: true,
+        text: "Monster  hits player for " + damage
+      });
+      damage = this.dmg(2, 10) * 2;
+      this.monsterHealth -= damage;
+      this.turns.unshift({
+        isPlayer: false,
+        text: "Player special attack hits monster for " + damage
+      });
       this.checkDeath();
     },
     heal: function() {
+      var damage = this.dmg(5, 10);
       if (this.playerHealth <= 90) {
-        this.playerHealth -= this.dmg(5, 10);
         this.playerHealth += 10;
-      } else {
-        this.playerHealth -= this.dmg(5, 10);
+        this.turns.unshift({
+          isPlayer: true,
+          text: "Heal for 10"
+        });
       }
+      this.playerHealth -= damage;
+      this.turns.unshift({
+        isPlayer: false,
+        text: "Monster  hits player for " + damage
+      });
     }
   }
 });
