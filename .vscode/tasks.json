@@ -1,0 +1,8 @@
+{
+    "version": "0.1.0",
+    "command": "Opera",
+    "windows": {
+        "command": "C:\\Users\\hajek.SUKL\\AppData\\Local\\Programs\\Opera\\launcher.exe"
+    },
+    "args": ["${file}"]
+}
